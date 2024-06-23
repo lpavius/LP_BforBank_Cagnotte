@@ -8,6 +8,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
+import java.util.List;
+import java.time.LocalDate;
+
 @Entity
 public class Client {
 
@@ -17,45 +20,54 @@ public class Client {
 	@Column(nullable = true)
 	private String name;
 	@Column(nullable = true)
-	private Integer nbCheckout;
+	//private Integer nbCheckout;
+	private List<LocalDate> checkout;
 	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "client")
+	@OneToOne(mappedBy = "client", cascade = CascadeType.ALL)
 	private Cagnotte cagnotte;
 	
-	
+	public Client() {
+		super();
+	}
+
+	public Client(Long id, String name, List<LocalDate> checkout, Cagnotte cagnotte) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.checkout = checkout;
+		this.cagnotte = cagnotte;
+	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public String getName() {
 		return name;
 	}
-	public Integer getNbCheckout() {
-		return nbCheckout;
+
+	public List<LocalDate> getCheckout() {
+		return checkout;
 	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public void setNbCheckout(Integer nbCheckout) {
-		this.nbCheckout = nbCheckout;
-	}
+
 	public Cagnotte getCagnotte() {
 		return cagnotte;
 	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setCheckout(List<LocalDate> checkout) {
+		this.checkout = checkout;
+	}
+
 	public void setCagnotte(Cagnotte cagnotte) {
 		this.cagnotte = cagnotte;
 	}
-	@Override
-	public String toString() {
-		return "Client [id=" + id 
-				+ ", name=" + name 
-				+ ", nbCheckout=" + nbCheckout 
-				+ ", cagnotte=" + cagnotte + "]";
-	}
-	
-	
-	
 	
 }

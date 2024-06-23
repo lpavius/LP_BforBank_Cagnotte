@@ -1,5 +1,7 @@
 package com.bforbank.cagnotte.service;
 
+import org.springframework.stereotype.Service;
+
 import com.bforbank.cagnotte.model.Cagnotte;
 import com.bforbank.cagnotte.model.Client;
 import com.bforbank.cagnotte.repository.CagnotteRepository;
@@ -7,6 +9,7 @@ import com.bforbank.cagnotte.repository.ClientRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
+@Service
 public class CagnotteServiceImpl implements CagnotteService {
 	
 	private ClientRepository clientRepository;
