@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bforbank.cagnotte.service.CagnotteService;
 import com.bforbank.cagnotte.service.ClientService;
 
 @RestController
@@ -14,12 +13,10 @@ import com.bforbank.cagnotte.service.ClientService;
 public class ClientController {
 	
 	private ClientService clientService;
-	private CagnotteService cagnotteService;
 	
-	public ClientController(ClientService clientService, CagnotteService cagnotteService) {
+	public ClientController(ClientService clientService) {
 		super();
 		this.clientService = clientService;
-		this.cagnotteService = cagnotteService;
 	}
 	
 	

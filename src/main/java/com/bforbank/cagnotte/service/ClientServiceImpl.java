@@ -22,8 +22,6 @@ public class ClientServiceImpl implements ClientService {
 		this.cagnotteRepository = cagnotteRepository;
 	}
 
-
-
 	@Override
 	public void checkoutClient(Long clientId) {
 		Client client = clientRepository.findById(clientId).orElseThrow(() 
@@ -32,6 +30,12 @@ public class ClientServiceImpl implements ClientService {
 		client.getCheckout().add(date);
 		clientRepository.save(client);
 
+	}
+
+	@Override
+	public int countCheckout(Long clientId) {
+		Client client = clientRepository.findById(clientId).orElseThrow(() -> new EntityNotFoundException("Client not found"));
+		return client.getCheckout().size();
 	}
 
 }

@@ -14,13 +14,15 @@ public class CagnotteServiceImpl implements CagnotteService {
 	
 	private ClientRepository clientRepository;
 	private CagnotteRepository cagnotteRepository;
-	
+	private ClientService clientService;
 	
 
-	public CagnotteServiceImpl(ClientRepository clientRepository, CagnotteRepository cagnotteRepository) {
+	public CagnotteServiceImpl(ClientRepository clientRepository, CagnotteRepository cagnotteRepository,
+			ClientService clientService) {
 		super();
 		this.clientRepository = clientRepository;
 		this.cagnotteRepository = cagnotteRepository;
+		this.clientService = clientService;
 	}
 
 	@Override
@@ -36,8 +38,11 @@ public class CagnotteServiceImpl implements CagnotteService {
 
 	@Override
 	public boolean checkAvailabilityCagnotte(Long clientId) {
-		// TODO Auto-generated method stub
-		return false;
+		Client client = clientRepository.findById(clientId)
+				.orElseThrow(() -> new EntityNotFoundException("Client No found"));
+		
+		Cagnotte cagnotte = client.getCagnotte();
+		return clientService.countCheckout(clientId) >= 3 && cagnotte.getAmount() >= 10.0;
 	}
 
 }
