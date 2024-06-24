@@ -4,12 +4,11 @@
 
 Ce projet (Test technique) est un microservice de cagnotte. Le microservice permet de gérer une cagnotte pour les clients de BforBank, qui peuvent ajouter des montants à leur cagnotte lors de passages en caisse, et vérifier la disponibilité de leur cagnotte.
 
-## Utilisation
-
 ## Data
 
 Quelques exemples d'instructions SQL pour insérer des données initiales dans la base de données à des fins de tests sont placer dans le fichier data.sql du répertoire src/main/resources.
 
+## Utilisation
 ### ajouter un passage en caisse
 
 **URL:** `http://localhost:8080/api/checkout/record/{ClientId}`  
@@ -21,7 +20,7 @@ Quelques exemples d'instructions SQL pour insérer des données initiales dans l
 **Example Request:**
 ```bash
 curl -X POST "http://localhost:8080/api/cagnotte/check/2"
-
+```
 Response: 200 OK en cas de succès.
 
 
@@ -37,7 +36,7 @@ Response: 200 OK en cas de succès.
 **Example Request:**
 ```bash
 curl -X POST "http://localhost:8080/api/cagnotte/add/2?amount=5.00"
-
+```
 Response: 200 OK en cas de succès.
 
 ### Vérifier la disponibilité de la cagnotte
@@ -51,7 +50,7 @@ Response: 200 OK en cas de succès.
 **Example Request:**
 ```bash
 curl -X GET "http://localhost:8080/api/cagnotte/check/2"
-
+```
 Response: 200 OK avec true or false indiquant si la cagnotte est disponible.
 
 ### Exemple test
