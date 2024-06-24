@@ -22,10 +22,11 @@ public class CagnotteController {
 		this.cagnotteService = cagnotteService;
 	}
 	
-	/*@PostMapping("/add/{clientId}")
-	private ResponseEntity<Void> addAmount(@PathVariable Long clientId, @RequestParam double amont) {
-		
-	}*/
+	@PostMapping("/add/{clientId}")
+	private ResponseEntity<Void> addAmount(@PathVariable Long clientId, @RequestParam double amount) {
+		cagnotteService.addAmountToCagnotte(clientId, amount);
+		return ResponseEntity.ok().build();
+	}
 	
 	@GetMapping("/check/{clientId}")
 	private ResponseEntity<Boolean> checkAvailability(@PathVariable Long clientId) {
