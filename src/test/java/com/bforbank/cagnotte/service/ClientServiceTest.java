@@ -25,10 +25,10 @@ import java.util.ArrayList;
 public class ClientServiceTest {
 	
 	@Mock
-	ClientRepository clientRepository;
+	private ClientRepository clientRepository;
 	
 	@InjectMocks
-	ClientServiceImpl clientService;
+	private ClientServiceImpl clientService;
 	
 	private Client client;
 	
@@ -61,5 +61,4 @@ public class ClientServiceTest {
 		
 	}
 	
-
 }

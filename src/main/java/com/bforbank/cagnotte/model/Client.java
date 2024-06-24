@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
 
@@ -21,7 +22,7 @@ public class Client {
 	private String name;
 	@Column(nullable = true)
 	//private Integer nbCheckout;
-	private List<LocalDate> checkout;
+	private List<LocalDate> checkout = new ArrayList<>();
 	
 	@OneToOne(mappedBy = "client", cascade = CascadeType.ALL)
 	private Cagnotte cagnotte;
